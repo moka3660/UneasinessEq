@@ -1,7 +1,9 @@
 #include "mbed.h"
 
-#define runtime1 20;    //sec
-#define runtime2 10;    //sec
+//#define runtime1 20;    //sec
+//#define runtime2 10;    //sec
+const int runtime1 = 20;
+const int runtime2 = 10;
 
 DigitalOut myled(LED1);
 DigitalOut runled(LED2);    //動作中点灯
