@@ -25,6 +25,7 @@ int main() {
         runled = 0;
         lamp = 0;
         volume = 0;
+        speaker.write(0);
 
         runled=0;       //スタート待機
         debug=0;
@@ -40,24 +41,14 @@ int main() {
             runled = 1;     //LED点灯
             wait(1.0);
             //maintime.start();   //タイマスタート
-            speed.period_us(60);    //周期設定
-
-            lamp = 1;       //回転灯動作開始
-            speed.write(0.5);   //回転速度
-
-            //待機その一
-            wait(5.0);
-
-            //二次動作（加速）
-            speed.write(1.0);
-
-            //待機その二
-            wait(5.0);
-
+            speaker.period_us(2272.7);    //周期設定(microsec) ド
+            speaker.write(0.5);   //デューティ比0.5
+            wait(2.0);
+            speaker.period_us(1803.8);    //レ
+            wait(2.0);
 
             //三次動作（停止）
-            lamp = 0;
-            speed.write(0);
+            speaker.write(0);
             runled = 0;
             //maintime.stop();
         }
