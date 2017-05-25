@@ -41,11 +41,23 @@ int main() {
             runled = 1;     //LED点灯
             wait(1.0);
             //maintime.start();   //タイマスタート
-            speaker.period_us(2272.7);    //周期設定(microsec) ド
+            speaker.period_us(3816.7);  //周期設定(microsec) ど
             speaker.write(0.5);   //デューティ比0.5
-            wait(2.0);
-            speaker.period_us(1803.8);    //レ
-            wait(2.0);
+            wait(0.2);
+            speaker.period_us(3401.4);    //れ
+            wait(0.2);
+            speaker.period_us(3030.3);    //み
+            wait(0.2);
+            speaker.period_us(2865.3);    //ふぁ
+            wait(0.2);
+            speaker.period_us(2551.0);    //そ
+            wait(0.2);
+            speaker.period_us(2272.7);    //ら
+            wait(0.2);
+            speaker.period_us(2024.3);    //し
+            wait(0.2);
+            speaker.period_us(1912.0);    //ど
+            wait(0.2);          
 
             //三次動作（停止）
             speaker.write(0);
