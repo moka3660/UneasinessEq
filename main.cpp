@@ -51,20 +51,14 @@ int main()
     /*   警報器スタート  */
 
     //runtime1待機
-    while (thistime <= runtime1)
-    {
-      thistime = maintime.read(); //時間取得
-    }
+    wait(10.0);
 
     //二次動作(加速)
     speed.write(1.0);     //回転速度はやく
     volume = 1;     //音量大きく
 
     //runtime2待機
-    while (thistime <= (runtime1 + runtime2))
-    {
-      thistime = maintime.read(); //時間取得
-    }
+    wait(10.0);
 
     //三次動作(停止)
     lamp = 0;   //回転灯停止
