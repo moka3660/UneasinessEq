@@ -1,8 +1,8 @@
 #include "mbed.h"
 
-DigitalOut myled(LED1);    //待機時点灯(暗)
-DigitalOut runled(LED2);    //動作中点灯
-DigitalOut debug(LED4);
+DigitalOut myled(p25);    //待機時点灯(暗)
+DigitalOut runled(p26);    //動作中点灯
+//DigitalOut debug(LED4);
 
 DigitalOut lamp(p23);       //ランプ,回転
 PwmOut speed(p22);          //回転速度
@@ -45,6 +45,7 @@ int main() {
             siren(0.25,10);
 
             //二次動作（加速）
+            myled = 1;       //こっちも点灯しておく
             speed.write(1.0);
             siren(0.15,10);
 
@@ -53,6 +54,7 @@ int main() {
             lamp = 0;       //回転灯停止
             speed.write(0);
             runled = 0;     //LED消灯
+            myled = 0;
             maintime.stop();     //タイマストップ
         }
     }
