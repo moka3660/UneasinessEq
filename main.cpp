@@ -2,13 +2,12 @@
 
 DigitalOut myled(LED1);    //待機時点灯(暗)
 DigitalOut runled(LED2);    //動作中点灯
-
 DigitalOut debug(LED4);
 
 DigitalOut lamp(p23);       //ランプ,回転
 PwmOut speed(p22);          //回転速度
 DigitalOut volume(p24);     //音量（大小）
-DigitalOut speaker(p21);        //スピーカー出力
+DigitalOut speaker(p21);    //スピーカー出力
 AnalogIn m_vol(p16);        //回転速度入力(12bit)
 DigitalIn start(p30);       //スタートスイッチ
 
@@ -24,9 +23,6 @@ int main() {
         runled = 0;
         lamp = 0;
         volume = 0;
-//        speaker.write(0);
-        //周期設定(microsec)
-  //      speaker.period_us(2024.3);    //し
 
         runled=0;       //スタート待機
         debug=0;
@@ -62,6 +58,7 @@ int main() {
     }
 }
 
+//サイレン鳴らす関数
 void siren(double inter,int length) //インターバルとサイレンの時間
 {
     int starttime;  //サイレン開始時間
@@ -69,22 +66,17 @@ void siren(double inter,int length) //インターバルとサイレンの時間
     starttime=maintime.read();  //開始時間取得
     while(thistime-starttime<=length)
     {
-//        speaker.write(0.5);     //サイレンON(デューティ比0.5)
-//        speaker.period_us(2024.3);  //し
-//        wait(inter);
-//        speaker.period_us(2551.0);  //そ
-//        wait(inter);
-        int loop_shi,loop_so;
+        int loop_shi,loop_so; //それぞれの繰り返し回数
         loop_shi = static_cast<int>(inter/0.0020243);
         loop_so  = static_cast<int>(inter/0.002551);
-        for (int i=0;i<=loop_shi;i++)
+        for (int i=0;i<=loop_shi;i++) //し
         {
           speaker = 1;
           wait_us(1012.2);
           speaker = 0;
           wait_us(1012.2);
         }
-        for (int i=0;i<=loop_so;i++)
+        for (int i=0;i<=loop_so;i++)  //そ
         {
           speaker = 1;
           wait_us(1275.5);
